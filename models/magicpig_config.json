@@ -1,0 +1,13 @@
+{
+"chunk_size": 4096,
+"cache_layers": [0, 16],
+"lsh_K": 10,
+"lsh_L": 150,
+"mem_efficient": 1,
+"device_budget": 68,
+"window_size": 64,
+"generation_budget": 256,
+"gen_len": 32,
+"model_path": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+"eos": [128001, 128008, 128009]
+}
