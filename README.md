@@ -4,7 +4,7 @@
 
     bash install.sh
 
-Only Intel CPUs are supported now. We also provide huggingface-like implementation for accuracy evaluation, which do not need Intel CPUs.
+Only Intel CPUs are supported now. We also provide huggingface-like implementation for accuracy evaluation, which does not need Intel CPUs.
 
 ## Experiments
 
