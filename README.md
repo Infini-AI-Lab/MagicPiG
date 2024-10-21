@@ -17,7 +17,7 @@ Only Intel CPUs are supported now. We also provide huggingface-like implementati
     expid=0
     bash run.sh llama3-8b-chat-128k synthetic $K $L $sink $local $model $expid
 
-This script is implemented in huggingface to reproduce accuracy results. The reference file (for model and KV cache implementation) can be found in refs/.
+This script is implemented in huggingface to reproduce accuracy results (for RULER benchmark). The reference file (for model and KV cache implementation) can be found in refs/.
 
 Three models are supported now: llama3-8b-chat-128k (Llama-3.1-8B-Instruct), llama3-70b-chat-128k (Llama-3.1-70B-Instruct), mistral-7b-chat-512k (
 MegaBeam-Mistral-7B-512k).
