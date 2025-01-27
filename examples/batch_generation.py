@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from models.llama import LLM
+from models.llama import LLM, LLMAwq
 import argparse
 import torch
 from transformers import AutoTokenizer
@@ -14,6 +14,7 @@ parser.add_argument('--D', type=int, default=1, help='dec length')
 parser.add_argument('--G', type=int, default=32, help='generation length')
 parser.add_argument('--K', type=int, default=10, help='K')
 parser.add_argument('--L', type=int, default=150, help='K')
+parser.add_argument('--awq', action='store_true', help='use LLMAwq')
 args = parser.parse_args()
 print(args)
 MAX_LEN = args.M
@@ -32,7 +33,13 @@ with open("../data/data4k.jsonl") as f:
         data = item
         break
 
-llm = LLM(K=args.K, L=args.L, max_length=MAX_LEN, model_name=args.model, batch_size=BATCH_SIZE, device=DEVICE, dtype=DTYPE)
+if args.awq:
+    print("Using LLMAwq for AWQ optimization.")
+    llm = LLMAwq(K=args.K, L=args.L, max_length=MAX_LEN, model_name=args.model, batch_size=BATCH_SIZE, device=DEVICE, dtype=DTYPE)
+else:
+    print("Using standard LLM.")
+    llm = LLM(K=args.K, L=args.L, max_length=MAX_LEN, model_name=args.model, batch_size=BATCH_SIZE, device=DEVICE, dtype=DTYPE)
+
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 text = data["input"]
 input_ids = tokenizer.encode(text=text, return_tensors="pt").to(device=DEVICE)

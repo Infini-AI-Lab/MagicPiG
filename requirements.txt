@@ -3,4 +3,5 @@ sentencepiece
 protobuf
 jsonlines
 pytest
-
+autoawq
+autoawq-kernels
